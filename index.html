@@ -3,33 +3,28 @@
 <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
 <!-- we import arjs version without NFT but with marker + location based support -->
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-<script>
-    AFRAME.registerComponent('handle-model-loading', {
-        init: function() {
-            this.el.addEventListener('model-loaded', e => {
-                // Remove or hide your loading indicator here
-                document.querySelector("#loading-screen").style.display = "none";
-            });
-        }
-    });
-</script>
 
 <body style="margin : 0px; overflow: hidden;">
     <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
 
         <a-assets>
             <a-asset-item id="urna_001" src="./assets/urna_001.glb"></a-asset-item>
-            <a-asset-item id="construcao_forte_castelo" src="./assets/purussaurus.glb"></a-asset-item>
+            <a-asset-item id="urna_002" src="./assets/urna_002.glb"></a-asset-item>
+            <a-asset-item id="purussaurus" src="./assets/purussaurus.glb"></a-asset-item>
         </a-assets>
 
-        <a-marker type='barcode' value='20'>
-            <a-box id="loading-screen"></a-box>
-            <a-entity scale="2.5 2.5 2.5" gltf-model="#urna_001" handle-model-loading></a-entity>
+        <a-marker type='barcode' value='10'>
+            <a-entity gltf-model="#purussaurus" scale="2 2 2"></a-entity>
         </a-marker>
 
-        <a-marker type='barcode' value='10'>
-            <a-entity gltf-model="#construcao_forte_castelo" scale="2 2 2"></a-entity>
+        <a-marker type='barcode' value='20'>
+            <a-entity scale="2 2 2" gltf-model="#urna_001"></a-entity>
         </a-marker>
+
+        <a-marker type='barcode' value='30'>
+            <a-entity scale="2 2 2" gltf-model="#urna_002"></a-entity>
+        </a-marker>
+
 
         <a-entity camera></a-entity>
     </a-scene>
